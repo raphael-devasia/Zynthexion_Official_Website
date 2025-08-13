@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Zynthexion Design System - Dark tech theme with blue-cyan gradients
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Bright Background System */
+    --background: 220 40% 15%;
+    --foreground: 180 100% 95%;
+
+    --card: 220 35% 18%;
+    --card-foreground: 180 100% 95%;
+
+    --popover: 220 35% 18%;
+    --popover-foreground: 180 100% 95%;
+
+    /* Zynthexion Brand Colors - Blue to Cyan */
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 25% 8%;
+    --primary-glow: 180 100% 50%;
+
+    --secondary: 220 40% 22%;
+    --secondary-foreground: 180 100% 95%;
+
+    --muted: 220 35% 20%;
+    --muted-foreground: 200 25% 70%;
+
+    --accent: 200 100% 50%;
+    --accent-foreground: 180 100% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 40% 30%;
+    --input: 220 35% 22%;
+    --ring: 200 100% 50%;
+
+    --radius: 1rem;
+
+    /* Custom Zynthexion Design Tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(220 40% 15%), hsl(200 60% 25%), hsl(180 60% 30%));
+    --brand-gradient: linear-gradient(90deg, hsl(200 100% 50%), hsl(180 100% 50%));
+    --glow-gradient: linear-gradient(90deg, hsl(200 100% 50% / 0.3), hsl(180 100% 50% / 0.3));
+    
+    /* Shadows with brand colors */
+    --shadow-glow: 0 0 40px hsl(200 100% 50% / 0.3);
+    --shadow-subtle: 0 4px 20px hsl(220 25% 5% / 0.8);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Keep same colors - we're already dark themed */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--hero-gradient);
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero text animation */
+  .hero-text {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  .glow-effect {
+    filter: drop-shadow(var(--shadow-glow));
+  }
+
+  /* Smooth hover transitions */
+  .nav-link {
+    @apply relative transition-all duration-300 hover:text-primary;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--brand-gradient);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Card hover effects */
+  .service-card {
+    @apply transform transition-all duration-500 hover:scale-105;
+    background: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+    border: 1px solid hsl(var(--border));
+    backdrop-filter: blur(10px);
+  }
+
+  .service-card:hover {
+    box-shadow: var(--shadow-glow), var(--shadow-subtle);
+    border-color: hsl(var(--primary));
+  }
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px hsl(200 100% 50% / 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px hsl(180 100% 50% / 0.8));
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
