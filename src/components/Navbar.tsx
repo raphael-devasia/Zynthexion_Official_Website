@@ -34,8 +34,8 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex items-center space-x-2 text-2xl font-heading font-bold hero-text glow-effect">
-  <img src="/logo.png" alt="Zynthexion Logo Icon" className="h-8 w-8 object-contain" />
-  <span>ZYNTHEXION</span>
+  <img src="/logo.png" alt="Zynthexion Logo Icon" className="h-28 w-40 object-contain" />
+  {/* <span>ZYNTHEXION</span> */}
 </div>
           </div>
 
